@@ -8,7 +8,17 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "mocha": "mocha",
+    "test": "npm run mocha",
+    "test:watch": "npm run mocha -- -w",
+    "start": "node server.js",
+    "start:watch": "nodemon server.js",
+    "db:create": "node db/create.js",
+    "db:drop": "node db/drop.js",
+    "db:load": "node db/load.js",
+    "db: all": "npm run db:drop && npm run db:create && npm run db:load"
   },
   "repository": {
     "type": "git",
