@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="florists"></ul>
+    <script>
+        fetch('/florists')
+            .then(response => response.json())
+            .then(florists => {
+                const ul = document.getElementById('florists');
+                florists.forEach(florist => {
+                    const li = document.createElement('li');
+                    li.innerText = `${florist.name} ${florist.description}`;
+                    ul.appendChild(li);
+                });
+            });
+    </script>
+</body>
+</html>
