@@ -3,7 +3,7 @@ const app = require('../lib/app');
 const chai = require('chai');
 const { assert } = chai;
 
-describe('pets', () => {
+describe('florists', () => {
 
     let memphis = {
         name: 'Memphis',

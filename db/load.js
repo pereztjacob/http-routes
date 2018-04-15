@@ -14,7 +14,7 @@ const categoryPromises = categories.map(category => {
 Promise.all(categoryPromises)
     .then(() => {
         return client.query(
-                `SELECT * FORM categories`
+            'SELECT * FORM categories'
         );
     }).then(result => {
         console.log(result.rows);
