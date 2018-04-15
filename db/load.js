@@ -1,20 +1,20 @@
 const client = require('../lib/db-client');
 
-const categories = ['florists'];
+const florists = [{ name:'Memphis' }, { name: 'New Orleans' }, { name: 'Plymouth' }];
 
-const categoryPromises = categories.map(category => {
+const floristPromises = florists.map(florist => {
     return client.query(
-        `INSERT INTO categories(name)
+        `INSERT INTO florists(name)
         VALUES($1)
-        ON CONFLIST DO NOTHING;`,
-        [category]
+        ON CONFLICT DO NOTHING;`,
+        [florist]
     );
 });
 
-Promise.all(categoryPromises)
+Promise.all(floristPromises)
     .then(() => {
         return client.query(
-            'SELECT * FORM categories'
+            'SELECT * FROM florists'
         );
     }).then(result => {
         console.log(result.rows);
